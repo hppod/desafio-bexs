@@ -28,4 +28,3 @@ const readPath = (path) => {
 }
 
 module.exports = { upload }
-
