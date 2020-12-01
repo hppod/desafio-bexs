@@ -1,7 +1,7 @@
 const inquirer = require('inquirer')
 const arguments = process.argv[2]
-const { upload } = require('./app/services/file-uploader')
-const { bestFlight } = require('./app/services/best-flight')
+const { upload } = require('./src/services/file-uploader')
+const { bestFlight } = require('./src/services/best-flight')
 
 if (arguments === undefined) {
     console.log('Necessário informar o caminho do arquivo das rotas a ser carregado.')
