@@ -26,9 +26,9 @@ if (arguments === undefined) {
         }
     ])
 
-    const [to, from] = route['destinationFlight'].split('-')
+    const [from, to] = route['destinationFlight'].split('-')
 
-    const { bestRoute, price } = bestFlight(to, from)
+    const { bestRoute, price } = bestFlight(from, to)
 
     console.log(`The best route is ${bestRoute} and the price is ${price}`)
 

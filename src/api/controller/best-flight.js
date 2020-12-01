@@ -4,8 +4,8 @@ const fs = require('fs')
 class BestFlight {
 
     getBestFlight(req, res) {
-        const [to, from] = req.params['toFrom'].split('-')
-        const { bestRoute, price } = bestFlight(to, from)
+        const [from, to] = req.params['fromTo'].split('-')
+        const { bestRoute, price } = bestFlight(from, to)
 
         res.status(200).send(`The best route is ${bestRoute} and the price is ${price}`)
     }
@@ -16,19 +16,19 @@ class BestFlight {
 
         body.forEach((item, index) => {
 
-            if (item['to'] === undefined) {
-                hasError.push(`It is necessary to inform the TO key of the index object ${index}`)
-            }
-
             if (item['from'] === undefined) {
                 hasError.push(`It is necessary to inform the FROM key of the index object ${index}`)
+            }
+
+            if (item['to'] === undefined) {
+                hasError.push(`It is necessary to inform the TO key of the index object ${index}`)
             }
 
             if (item['value'] === undefined) {
                 hasError.push(`It is necessary to inform the VALUE key of the index object ${index}`)
             }
 
-            const route = `${item['to']},${item['from']},${item['value']}`
+            const route = `${item['from']},${item['to']},${item['value']}`
 
             if (!route.includes('undefined')) {
                 fs.appendFileSync('input-routes.csv', '\n' + route, 'utf8')
