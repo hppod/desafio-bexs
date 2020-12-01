@@ -26,13 +26,20 @@ if (arguments === undefined) {
         }
     ])
 
-    const [from, to] = route['destinationFlight'].split('-')
+    const [from, to] = route['destinationFlight'].toUpperCase().split('-')
+
     const { hasFrom, hasTo } = checkIfThePointsExist(from, to)
     let result = null
 
     if (hasFrom && hasTo) {
         const { bestRoute, price } = bestFlight(from, to)
-        result = `The best route is ${bestRoute} and the price is ${price}`
+
+        if (bestRoute !== undefined && price > 0) {
+            result = `The best route is ${bestRoute} and the price is ${price}`
+        } else {
+            result = `We didn't find a route to ${from}-${to}`
+        }
+
     } else if (!hasFrom && hasTo) {
         result = `We did not find the starting point '${from}' in our records. It is not possible to calculate the smallest value`
     } else if (hasFrom && !hasTo) {

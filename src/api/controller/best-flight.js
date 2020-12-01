@@ -10,7 +10,13 @@ class BestFlight {
 
         if (hasFrom && hasTo) {
             const { bestRoute, price } = bestFlight(from, to)
-            response = `The best route is ${bestRoute} and the price is ${price}`
+
+            if (bestRoute !== undefined && price > 0) {
+                response = `The best route is ${bestRoute} and the price is ${price}`
+            } else {
+                response = `We didn't find a route to ${from}-${to}`
+            }
+
         } else if (!hasFrom && hasTo) {
             response = `We did not find the starting point '${from}' in our records. It is not possible to calculate the smallest value`
         } else if (hasFrom && !hasTo) {

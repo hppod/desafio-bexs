@@ -55,17 +55,17 @@ class Fork {
         const path = [endPoint]
         let finalStep = endPoint
 
-        while (finalStep !== startPoint) {
+        while (finalStep !== startPoint && finalStep !== undefined) {
             path.unshift(way[finalStep])
             finalStep = way[finalStep]
         }
 
-        const best = {
-            bestRoute: path,
-            price: times[endPoint]
+        if (finalStep !== undefined) {
+            return { bestRoute: path, price: times[endPoint] }
+        } else {
+            return { bestRoute: undefined, price: 0 }
         }
 
-        return best
     }
 }
 

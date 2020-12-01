@@ -7,11 +7,8 @@ const upload = (file) => {
         console: false
     })
 
-    interface.on('line', (line) => {
-        if (line.split(',').length === 3) {
-            fs.appendFileSync('input-routes.csv', '\n' + line, 'utf8')
-        }
-    })
+    return interface
+
 }
 
 const readPath = (path) => {
