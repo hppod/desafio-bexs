@@ -1,6 +1,7 @@
 const inquirer = require('inquirer')
 const arguments = process.argv[2]
 const { upload } = require('./app/services/file-uploader')
+const { bestFlight } = require('./app/services/best-flight')
 
 if (arguments === undefined) {
     console.log('Necessário informar o caminho do arquivo das rotas a ser carregado.')
@@ -27,6 +28,8 @@ if (arguments === undefined) {
 
     const [to, from] = route['destinationFlight'].split('-')
 
-    console.log(to, from)
+    const { bestRoute, price } = bestFlight(to, from)
+
+    console.log(`The best route is ${bestRoute} and the price is ${price}`)
 
 })() 
