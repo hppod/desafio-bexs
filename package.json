@@ -4,6 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
+    "dev-app": "nodemon app.js",
+    "dev-server": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -14,5 +16,8 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "inquirer": "^7.3.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
   }
 }
