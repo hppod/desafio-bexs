@@ -18,7 +18,7 @@ const readPath = (path) => {
     return fs.createReadStream(path)
         .on('error', (err) => {
             if (err.message.includes('ENOENT')) {
-                console.log('O arquivo de rotas informado não é um arquivo válido. Por favor informe um arquivo válido')
+                console.log('The directions file entered is not a valid file. Please enter a valid file')
                 process.exit(0)
             } else {
                 console.log(err)

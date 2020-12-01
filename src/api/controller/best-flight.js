@@ -17,20 +17,20 @@ class BestFlight {
         body.forEach((item, index) => {
 
             if (item['to'] === undefined) {
-                hasError.push(`É necessário informar a chave TO do objeto do indice ${index}`)
+                hasError.push(`It is necessary to inform the TO key of the index object ${index}`)
             }
 
             if (item['from'] === undefined) {
-                hasError.push(`É necessário informar a chave FROM do objeto do indice ${index}`)
+                hasError.push(`It is necessary to inform the FROM key of the index object ${index}`)
             }
 
             if (item['value'] === undefined) {
-                hasError.push(`É necessário informar a chave VALUE do objeto do indice ${index}`)
+                hasError.push(`It is necessary to inform the VALUE key of the index object ${index}`)
             }
 
             const route = `${item['to']},${item['from']},${item['value']}`
 
-            if (route.split(',').length === 3 && !route.includes('undefined')) {
+            if (!route.includes('undefined')) {
                 fs.appendFileSync('input-routes.csv', '\n' + route, 'utf8')
             }
         })
@@ -39,7 +39,7 @@ class BestFlight {
             res.status(201).send(`${body.length} new routes added`)
         } else {
             res.status(400).json({
-                message: "Há erros no corpo da requisição. Alguns objetos podem não ter sido inseridos corretamente",
+                message: "There are errors in the request body. Some objects may not have been inserted correctly",
                 errors: hasError
             })
         }

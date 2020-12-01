@@ -4,7 +4,7 @@ const { upload } = require('./src/services/file-uploader')
 const { bestFlight } = require('./src/services/best-flight')
 
 if (arguments === undefined) {
-    console.log('Necessário informar o caminho do arquivo das rotas a ser carregado.')
+    console.log('It is necessary to inform the file path of the routes to be loaded.')
     process.exit(0)
 } else {
     upload(arguments)
@@ -15,11 +15,11 @@ if (arguments === undefined) {
         {
             name: 'destinationFlight',
             type: 'input',
-            message: 'Insira a rota desejada no formato DE-PARA',
+            message: 'Enter the desired route in the FROM-TO format',
             default: 'GRU-CDG',
             validate: (value) => {
                 if (value.split('-').length !== 2) {
-                    return 'A rota está fora do formato correto. Insira a rota no formato DE-PARA'
+                    return 'The route is out of the correct format. Enter the route in the FROM-TO format'
                 }
                 return true
             }
