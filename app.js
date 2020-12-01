@@ -1,7 +1,7 @@
 const inquirer = require('inquirer')
 const arguments = process.argv[2]
 const { upload } = require('./src/services/file-uploader')
-const { bestFlight } = require('./src/services/best-flight')
+const { bestFlight, checkIfThePointsExist } = require('./src/services/best-flight')
 
 if (arguments === undefined) {
     console.log('It is necessary to inform the file path of the routes to be loaded.')
@@ -27,9 +27,20 @@ if (arguments === undefined) {
     ])
 
     const [from, to] = route['destinationFlight'].split('-')
+    const { hasFrom, hasTo } = checkIfThePointsExist(from, to)
+    let result = null
 
-    const { bestRoute, price } = bestFlight(from, to)
+    if (hasFrom && hasTo) {
+        const { bestRoute, price } = bestFlight(from, to)
+        result = `The best route is ${bestRoute} and the price is ${price}`
+    } else if (!hasFrom && hasTo) {
+        result = `We did not find the starting point '${from}' in our records. It is not possible to calculate the smallest value`
+    } else if (hasFrom && !hasTo) {
+        result = `We did not find the destination '${to}' in our records. It is not possible to calculate the smallest value`
+    } else {
+        result = `We did not find the starting point '${from}' or the destination '$ {to}' in our records. It is not possible to calculate the smallest value`
+    }
 
-    console.log(`The best route is ${bestRoute} and the price is ${price}`)
+    console.log(result)
 
 })() 

@@ -29,4 +29,27 @@ const buildFlightList = (routes) => {
     }, [])
 }
 
-module.exports = { bestFlight }
+const checkIfThePointsExist = (from, to) => {
+    let hasFrom = false
+    let hasTo = false
+
+    const flights = buildFlightList(fs.readFileSync('input-routes.csv', 'utf8').split('\n'))
+
+    flights.filter(a => {
+        const flightsFrom = a[0]
+        const flightsTo = a[1]
+
+        if (flightsFrom === from) {
+            hasFrom = true
+        }
+
+        if (flightsTo === to) {
+            hasTo = true
+        }
+
+    })
+
+    return { hasFrom, hasTo }
+}
+
+module.exports = { bestFlight, checkIfThePointsExist }

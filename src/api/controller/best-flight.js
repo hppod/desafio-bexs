@@ -1,13 +1,25 @@
-const { bestFlight } = require('./../../services/best-flight')
+const { bestFlight, checkIfThePointsExist } = require('./../../services/best-flight')
 const fs = require('fs')
 
 class BestFlight {
 
     getBestFlight(req, res) {
         const [from, to] = req.params['fromTo'].split('-')
-        const { bestRoute, price } = bestFlight(from, to)
+        const { hasFrom, hasTo } = checkIfThePointsExist(from, to)
+        let response = null
 
-        res.status(200).send(`The best route is ${bestRoute} and the price is ${price}`)
+        if (hasFrom && hasTo) {
+            const { bestRoute, price } = bestFlight(from, to)
+            response = `The best route is ${bestRoute} and the price is ${price}`
+        } else if (!hasFrom && hasTo) {
+            response = `We did not find the starting point '${from}' in our records. It is not possible to calculate the smallest value`
+        } else if (hasFrom && !hasTo) {
+            response = `We did not find the destination '${to}' in our records. It is not possible to calculate the smallest value`
+        } else {
+            response = `We did not find the starting point '${from}' or the destination '${to}' in our records. It is not possible to calculate the smallest value`
+        }
+
+        res.status(200).send(response)
     }
 
     addNewRoute(req, res) {
