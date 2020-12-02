@@ -24,12 +24,12 @@ Para executar a aplicação, siga os passos:
  8. mocha: responsável pela execução dos testes automatizados
 
 **Estrutura dos arquivos**
- 9. Na raiz do projeto há os arquivos CSV, os arquivos de dependências, os arquivos responsáveis pela execução da interface de console (app.js) e pela inicialização da API REST (server.js)
- 10. Na pasta "test" estão concentrados todos os testes da aplicação
- 11. Na pasta "src" há duas pastas:
+ 1. Na raiz do projeto há os arquivos CSV, os arquivos de dependências, os arquivos responsáveis pela execução da interface de console (app.js) e pela inicialização da API REST (server.js)
+ 2. Na pasta "test" estão concentrados todos os testes da aplicação
+ 3. Na pasta "src" há duas pastas:
 	 1. A pasta "controller" contém as classes responsáveis pela lógica que é aplicada quando é feita uma requisição para algum endpoint da API REST
 	 2. A pasta "routes" contém o arquivo responsável por identificar as rotas disponíveis na API REST
- 12. Na pasta "services" estão concentradas todas as funções que são utilizadas no projeto, tanto pela interface de console quanto pela API REST:
+ 4. Na pasta "services" estão concentradas todas as funções que são utilizadas no projeto, tanto pela interface de console quanto pela API REST:
 	 1. O arquivo best-flight.js é o arquivo que se comunica diretamente com o arquivo app.js que inicializa a interface de console. Nele há a função bestFlight que retorna a melhor rota disponível dado os pontos, inicial e final. Há também a função buildFlightList que retorna um array de todos os pontos disponíveis no arquivo CSV. Há também a função checkIfThePointsExist que checa se um ponto informado existe no arquivo CSV ou não.
 	 2.  O arquivo file-csv.js é o arquivo responsável por manipular os arquivos CSV. Nele há a função load, que carrega o arquivo informado e adiciona as linhas dele no arquivo input-routes.csv. Há a função readPath, que é utilizada pela função load para ler o caminho informado pelo usuário e caso o caminho não exista, disparar um erro. Há também a função addFlight que é responsável por adicionar novos vôos no arquivo CSV.
 	 3. O arquivo fork.js é o arquivo responsável por montar um grafo e encontrar o melhor caminho a ser percorrido pelo viajante. Nele há a função addStartPoints que adiciona os pontos iniciais em um array e cria um objeto para cada ponto que é adicionado no array. Há a função addFinalPoints que adiciona um objeto com o ponto inicial e valor, ou ponto final e valor no objeto do ponto criado anteriormente pela função addStartPoints. Há também a função findBetterWay que percorre o array de pontos e adiciona eles em uma fila para que o objeto com os pontos seja percorrido e possa ser verificado qual o melhor caminho a ser feito.
