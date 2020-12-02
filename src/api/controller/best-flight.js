@@ -25,7 +25,7 @@ class BestFlight {
             response = `We did not find the starting point '${from}' or the destination '${to}' in our records. It is not possible to calculate the smallest value`
         }
 
-        res.status(200).send(response)
+        res.status(200).send({ message: response })
     }
 
     addNewRoute(req, res) {
@@ -49,14 +49,14 @@ class BestFlight {
             const route = `${item['from']},${item['to']},${item['value']}`
 
             if (!route.includes('undefined')) {
-                console.log(addFlight(route))
+                addFlight(route)
             }
         })
 
         if (hasError.length === 0) {
-            res.status(201).send(`${body.length} new routes added`)
+            res.status(201).send({ message: `${body.length} new routes added` })
         } else {
-            res.status(400).json({
+            res.status(400).send({
                 message: "There are errors in the request body. Some objects may not have been inserted correctly",
                 errors: hasError
             })

@@ -20,4 +20,4 @@ server.use('*', (req, res) => errorHandler.errorHandlerURL(req, res))
 
 server.listen(PORT, () => console.log(`API listening on port ${PORT}`))
 
-module.exports = server
+module.exports = { server }
