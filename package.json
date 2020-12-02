@@ -4,7 +4,9 @@
   "description": "",
   "main": "app.js",
   "scripts": {
+    "prod-app": "",
     "dev-app": "nodemon app.js",
+    "prod-server": "",
     "dev-server": "nodemon server.js",
     "test": "mocha test --exit"
   },
