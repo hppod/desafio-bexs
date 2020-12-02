@@ -1,10 +1,5 @@
 const chai = require('chai')
-const http = require('chai-http')
-const subset = require('chai-subset')
 const fileCsv = require('../src/services/file-csv')
-
-chai.use(http)
-chai.use(subset)
 
 describe('File CSV Services Functions', () => {
     it('load', () => {
