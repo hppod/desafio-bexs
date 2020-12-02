@@ -1,10 +1,14 @@
-**Necessário ter**
+## Desafio BEXS
+
+## **Necessário ter**
+
  1. Node.js instalado
 	 1. Para instalar o node.js basta acessar o link https://nodejs.org/pt-br/download/ e baixar o instalador para a plataforma desejada (Windows, Linux, macOS)
  2. npm
 	 1. O npm é instalado junto com o node.js, porém as vezes pode ser necessário reiniciar o computador após a instalação do node.js para que a plataforma identifique as variáveis de ambiente utilizadas pelo npm e habilite os comandos necessários para rodar essa aplicação
 
-**Como executar a aplicação**
+## **Como executar a aplicação**
+
 Para executar a aplicação, siga os passos:
  1. Faça um clone do repositório
  2. Acesse o diretório em que o repositório foi clonado
@@ -13,7 +17,8 @@ Para executar a aplicação, siga os passos:
  5. Para iniciar o servidor REST, digite o comando "npm run prod-server"
  6. Para executar os testes, digite o comando "npm run test"
 
-**Dependências**
+## **Dependências**
+
  1. body-parser: responsável por parsear o corpo das requisições que são enviadas a API REST
  2. chai: responsável pelos testes automatizados
  3. chai-http: um pacote do chai para execução de HTTP nos testes automatizados
@@ -23,7 +28,8 @@ Para executar a aplicação, siga os passos:
  7. inquirer: responsável por capturar informações digitadas no console pelo usuário
  8. mocha: responsável pela execução dos testes automatizados
 
-**Estrutura dos arquivos**
+## **Estrutura dos arquivos**
+
  1. Na raiz do projeto há os arquivos CSV, os arquivos de dependências, os arquivos responsáveis pela execução da interface de console (app.js) e pela inicialização da API REST (server.js)
  2. Na pasta "test" estão concentrados todos os testes da aplicação
  3. Na pasta "src" há duas pastas:
@@ -35,11 +41,13 @@ Para executar a aplicação, siga os passos:
 	 3. O arquivo fork.js é o arquivo responsável por montar um grafo e encontrar o melhor caminho a ser percorrido pelo viajante. Nele há a função addStartPoints que adiciona os pontos iniciais em um array e cria um objeto para cada ponto que é adicionado no array. Há a função addFinalPoints que adiciona um objeto com o ponto inicial e valor, ou ponto final e valor no objeto do ponto criado anteriormente pela função addStartPoints. Há também a função findBetterWay que percorre o array de pontos e adiciona eles em uma fila para que o objeto com os pontos seja percorrido e possa ser verificado qual o melhor caminho a ser feito.
 	 4. O arquivo queue.js é o arquivo responsável por montar a fila que é utilizada nas funções do arquivo fork.js. Há a função addToQueue que pega um item e adiciona na fila. Há também a função removeFirstFromQueue que remove e retorna o primeiro elemento na fila. Há também a função checkIfIsEmpty que retorna um booleano indiciando se a fila está vazia ou não
 
-**Decisões da solução**
+## **Decisões da solução**
+
 Para solucionar o problema foi utilizado um algoritmo baseado em grafos que simula vértices e arestas e dá a possibilidade de adicionar valores nas arestas, e por esses valores é possível definir qual é o melhor caminho para o problema, como no caso, qual a viagem mais barata a ser feita, independente o número de conexões a serem realizadas.
 Utilizei Node.js na resolução do problema pois tenho uma certa experiência com Javascript. Além do mais, o desenvolvimento de uma API REST utilizando Node.js é muito simples e de fácil aprendizagem.
 
-**API REST**
+## **API REST**
+
 Para iniciar a API REST, basta digitar o comando "npm run prod-server". O node.js irá executar o servidor na porta 3000 do computador.
 
 Para testar os endpoints, as requisições devem ser feitas para o endereço "http://localhost:3000/ROTA_DESEJADA".
