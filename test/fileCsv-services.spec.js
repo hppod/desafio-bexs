@@ -8,7 +8,7 @@ describe('File CSV Services Functions', () => {
     })
 
     it('addNewRoute', () => {
-        const route = fileCsv.addFlight('VCP,GRU,10', 'input-test.csv')
+        const route = fileCsv.addFlight('GRU,VCP,10', 'input-test.csv')
         chai.expect(route).to.equal(true)
     })
 
