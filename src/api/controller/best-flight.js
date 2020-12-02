@@ -1,5 +1,5 @@
 const { bestFlight, checkIfThePointsExist } = require('./../../services/best-flight')
-const fs = require('fs')
+const { addFlight } = require('./../../services/file-csv')
 
 class BestFlight {
 
@@ -49,7 +49,7 @@ class BestFlight {
             const route = `${item['from']},${item['to']},${item['value']}`
 
             if (!route.includes('undefined')) {
-                fs.appendFileSync('input-routes.csv', '\n' + route, 'utf8')
+                addFlight(route)
             }
         })
 

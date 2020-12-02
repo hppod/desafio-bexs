@@ -1,7 +1,7 @@
 const fs = require('fs')
 const readline = require('readline')
 
-const upload = (file) => {
+const load = (file) => {
     const interface = readline.createInterface({
         input: readPath(file),
         console: false
@@ -24,4 +24,8 @@ const readPath = (path) => {
         })
 }
 
-module.exports = { upload }
+const addFlight = (flight) => {
+    return fs.appendFileSync('input-routes.csv', '\n' + flight, 'utf8')
+}
+
+module.exports = { load, addFlight }

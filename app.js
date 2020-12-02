@@ -1,13 +1,13 @@
 const inquirer = require('inquirer')
 const arguments = process.argv[2]
-const { upload } = require('./src/services/file-uploader')
+const { load } = require('./src/services/file-csv')
 const { bestFlight, checkIfThePointsExist } = require('./src/services/best-flight')
 
 if (arguments === undefined) {
     console.log('It is necessary to inform the file path of the routes to be loaded.')
     process.exit(0)
 } else {
-    upload(arguments)
+    load(arguments)
 }
 
 (async () => {
