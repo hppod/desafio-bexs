@@ -1,4 +1,3 @@
-const { exception } = require('console')
 const fs = require('fs')
 const readline = require('readline')
 
