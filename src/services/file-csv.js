@@ -1,13 +1,18 @@
+const { exception } = require('console')
 const fs = require('fs')
 const readline = require('readline')
 
 const load = (file) => {
-    const interface = readline.createInterface({
-        input: readPath(file),
-        console: false
-    })
-
-    return interface
+    try {
+        const interface = readline.createInterface({
+            input: readPath(file),
+            console: false
+        })
+    } catch (err) {
+        return err
+    } finally {
+        return true
+    }
 
 }
 
@@ -24,8 +29,15 @@ const readPath = (path) => {
         })
 }
 
-const addFlight = (flight) => {
-    return fs.appendFileSync('input-routes.csv', '\n' + flight, 'utf8')
+const addFlight = (flight, file = 'input-routes.csv') => {
+    try {
+        fs.appendFileSync(file, '\n' + flight, 'utf8')
+    } catch (err) {
+        return err
+    } finally {
+        return true
+    }
+
 }
 
 module.exports = { load, addFlight }

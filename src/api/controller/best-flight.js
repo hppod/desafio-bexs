@@ -49,7 +49,7 @@ class BestFlight {
             const route = `${item['from']},${item['to']},${item['value']}`
 
             if (!route.includes('undefined')) {
-                addFlight(route)
+                console.log(addFlight(route))
             }
         })
 
