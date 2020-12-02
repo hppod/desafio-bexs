@@ -1,8 +1,8 @@
 const fs = require('fs')
 const Fork = require('./fork')
 
-const bestFlight = (to, from) => {
-    const flights = buildFlightList(fs.readFileSync('input-routes.csv', 'utf8').split('\n'))
+const bestFlight = ((to, from, file = 'input-routes.csv') => {
+    const flights = buildFlightList(fs.readFileSync(file, 'utf8').split('\n'))
     const fork = new Fork()
 
     flights.forEach((flight) => {
@@ -15,7 +15,7 @@ const bestFlight = (to, from) => {
     })
 
     return fork.findBetterWay(to, from)
-}
+})
 
 const buildFlightList = (routes) => {
     return routes.reduce((flights, route) => {
@@ -29,11 +29,11 @@ const buildFlightList = (routes) => {
     }, [])
 }
 
-const checkIfThePointsExist = (from, to) => {
+const checkIfThePointsExist = (from, to, file = 'input-routes.csv') => {
     let hasFrom = false
     let hasTo = false
 
-    const flights = buildFlightList(fs.readFileSync('input-routes.csv', 'utf8').split('\n'))
+    const flights = buildFlightList(fs.readFileSync(file, 'utf8').split('\n'))
 
     flights.filter(a => {
         const flightsFrom = a[0]
