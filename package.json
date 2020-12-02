@@ -1,16 +1,20 @@
 {
   "name": "desafio-bexs",
   "version": "1.0.0",
-  "description": "",
+  "description": "Implementação do desafio técnico para backend bexstech",
   "main": "app.js",
   "scripts": {
-    "prod-app": "",
+    "prod-app": "node app.js input-example.csv",
     "dev-app": "nodemon app.js",
-    "prod-server": "",
+    "prod-server": "node server.js",
     "dev-server": "nodemon server.js",
     "test": "mocha test --exit"
   },
-  "keywords": [],
+  "keywords": [
+    "bexs",
+    "nodejs",
+    "backend"
+  ],
   "author": "hppod",
   "license": "ISC",
   "dependencies": {
